@@ -154,8 +154,12 @@
     function videoChange() {
         var video = $("#video").val();
 
-        if (video.length > 0) {
+        if (video.length > 0 && video.match(/[a-zA-Z]/)) {
             $("#videoDiv").html("<embed class='embed-responsive-item' allowfullscreen='true' src='http://www.youtube.com/v/" + video + "' type='application/x-shockwave-flash'></embed>");
+            $("#videoDiv").show();
+            $("#videoBr").show();
+        } else if (video.length > 0 && !video.match(/[a-zA-Z]/)) {
+            $("#videoDiv").html('<iframe src="//player.vimeo.com/video/'+video+'?byline=0&portrait=0" width="400" height="225" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
             $("#videoDiv").show();
             $("#videoBr").show();
         } else {

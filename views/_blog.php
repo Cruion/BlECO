@@ -44,7 +44,7 @@ if ($userDetails["name"] == $blog["name"]) {
     </div>
     <div class="panel-body">
         <?php
-if ($blog["video"] != null) {
+if ($blog["video"] != null && preg_match('/[a-zA-Z]/', $blog["video"]) > 0) {
 	?>
             <div class="embed-responsive embed-responsive-16by9">
                 <embed
@@ -53,6 +53,14 @@ if ($blog["video"] != null) {
                     src="http://www.youtube.com/v/<?php echo $blog["video"];?>"
                     type="application/x-shockwave-flash">
                 </embed>
+            </div>
+            <br />
+            <?php
+
+} else if ($blog["video"] != null && preg_match('/[a-zA-Z]/', $blog["video"]) == 0) {
+	?>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="//player.vimeo.com/video/<?php echo $blog["video"];?>?byline=0&portrait=0" width="400" height="225" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <br />
             <?php
