@@ -42,6 +42,46 @@ li.divider a {
 .navbar-collapse {
 	padding: 0;
 }
+.btn.btn-square:before{
+    content: "";
+    display: block;
+    padding: 0;
+    padding-top: 100%;
+}
+.btn.btn-square {
+	padding: 0 !important;
+	margin: 0 !important;
+	float: left;
+	position: relative;
+    width: 45%;
+    overflow: hidden;
+}
+.btn.btn-square:nth-child(2n) {
+	margin-left: 5px !important;
+}
+.btn.btn-square:last-child {
+	clear: left;
+}
+.square-content{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+}
+.square-content div {
+   display: table;
+   width: 100%;
+   height: 100%;
+}
+.square-content span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white
+}
+
 .footer {
 	font-size: 8pt;
 	font-weight: 300;
