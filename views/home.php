@@ -21,6 +21,7 @@
                     <?php
 $blogTag = "announcements";
 $noComments = 1;
+$showAuthor = 0;
 foreach ($blogs as $blog) {
 	include "views/_blog.php";
 }
