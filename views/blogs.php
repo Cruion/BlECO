@@ -33,21 +33,7 @@ if (count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-                    <?php if ($guest == "notGuest") {?>
-                    <a href="<?php echo Util::getHost();?>/new-blog" class="btn btn-block btn-lg btn-default">New Blog</a>
-                    <?php }?>
-                    <h2>Weeks</h2>
-                    <div class="panel-group" id="accordion">
-
-                    <?php
-$once = true;
-foreach ($weeks as $week) {
-	include "views/_week.php";
-
-	$once = false;
-}
-?>
-                    </div>
+                    <?php include "views/_sidebar.php"?>
                 </div>
             </div>
         </div>

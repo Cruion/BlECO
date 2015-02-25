@@ -23,23 +23,7 @@ if (false && count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-                    <?php if ($_SESSION['guest'] == "notGuest") {?>
-                    <a href="/new-blog" class="btn btn-block btn-lg btn-info">New Post</a>
-                    <?php }?>
-                    <h2>Weeks</h2>
-                    <div class="panel-group" id="accordion">
-
-                        <?php
-$once = true;
-foreach ($weeks as $week) {
-	include "views/_week.php";
-
-	$once = false;
-}
-?>
-                </div>
-                <div class="col-md-3">
-
+                    <?php include "views/_sidebar.php"?>
                 </div>
             </div>
         </div>

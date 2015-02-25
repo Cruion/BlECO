@@ -49,10 +49,7 @@
                         <li><a href="/resources">Resources</a></li>
                         <!-- <li class="divider"><a href="#">&bull;</a></li> -->
                         <li><a href="/blog">Blogs</a></li>
-                        <?php if ($_SESSION['isStaff']) {?>
-                            <!-- <li><a href="/students">Students</a></li>
-                            <li><a href="/groups">Groups</a></li> -->
-                        <?php }?>
+
                         <!-- <li><a href="/images">Files</a></li> -->
                         <li class="divider"><a href="#">&bull;</a></li>
                         <li><a href="//google.com" target="_blank">Google</a></li>
@@ -63,6 +60,12 @@
                             <ul class="dropdown-menu smallCap" role="menu">
                                 <li class="disabled"><a href="#"><?php echo $_SESSION['userName'] . " - " . $userDetails["name"];?></a></li>
                                 <li class="divider"></li>
+                                <?php if ($_SESSION['isStaff']) {?>
+                            <li><a href="/students">Students</a></li>
+                            <li><a href="/groups">Groups</a></li>
+                            <li class="divider"></li>
+                        <?php }?>
+
                                 <li><a href="http://api.uqcloud.net/logout">Logout</a></li>
                             </ul>
                         </li>
