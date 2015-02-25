@@ -135,11 +135,12 @@ function get_slug_count($slug) {
 	return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-function post_blog($title, $slug, $video, $body, $author) {
-	$query = MySQL::getInstance()->prepare("INSERT INTO blogs (title, slug, video, body, published, author, modified) VALUES (:title, :slug, :video, :body, :published, :author, :modified)");
+function post_blog($title, $slug, $video, $tags, $body, $author) {
+	$query = MySQL::getInstance()->prepare("INSERT INTO blogs (title, slug, video, tags, body, published, author, modified) VALUES (:title, :slug, :video, :tags, :body, :published, :author, :modified)");
 	$query->bindValue(":title", $title, PDO::PARAM_STR);
 	$query->bindValue(":slug", $slug, PDO::PARAM_STR);
 	$query->bindValue(":video", $video, is_null($video) ? PDO::PARAM_NULL : PDO::PARAM_STR);
+	$query->bindValue(":tags", $tags, is_null($tags) ? PDO::PARAM_NULL : PDO::PARAM_STR);
 	$query->bindValue(":body", $body, PDO::PARAM_STR);
 	$query->bindValue(":author", $author, PDO::PARAM_STR);
 	$query->bindValue(":published", date("Y-m-d H:i:s"), PDO::PARAM_STR);

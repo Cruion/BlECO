@@ -14,6 +14,7 @@ class NewBlogHandler {
 		$title = $_POST["title"];
 		$body = $_POST["body"];
 		$video = $_POST["video"];
+		$tags = trim($_POST["tags"]);
 
 		$slug = Util::slugify($title);
 		$slugCount = get_slug_count($slug);
@@ -21,13 +22,13 @@ class NewBlogHandler {
 			$slug = Util::increment_string($slug, '-', $slugCount["slugs"] + 1);
 		}
 
-		global $userName;
+		$userName = $_SESSION['userName'];
 
 		if (strlen($video) == 0) {
 			$video = null;
 		}
 
-		post_blog($title, $slug, $video, $body, $userName);
+		post_blog($title, $slug, $video, $tags, $body, $userName);
 		header('Location: ' . Util::getHost() . '/blog/' . $slug);
 	}
 
