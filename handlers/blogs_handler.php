@@ -22,6 +22,7 @@ class BlogsHandler {
 		$userDetails = userAuth();
 
 		$offset = $_POST["offset"];
+		$excludeTags = $_POST["excludedTags"];
 
 		$blogs = get_more_blogs($offset);
 

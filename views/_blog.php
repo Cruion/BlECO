@@ -6,6 +6,19 @@ if (isset($blogTag)) {
 		return;
 	}
 }
+if (isset($excludeTags)) {
+	$excludedTagsArray = explode(",", $excludeTags);
+	$hasThing = false;
+	$tags = explode(",", $blog['tags']);
+	foreach ($excludedTagsArray as $excludedTag) {
+		if (in_array($excludedTag, $tags)) {
+			$hasThing = true;
+		}
+	}
+	if ($hasThing) {
+		return;
+	}
+}
 
 ?>
 

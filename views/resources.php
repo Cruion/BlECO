@@ -14,7 +14,7 @@ $noComments = 1;
 foreach ($blogs as $blog) {
 	include "views/_blog.php";
 }
-if (count($blogs) == 10) {
+if (false && count($blogs) == 10) {
 	?>
 
                     <button id="loadMoreBtn" type="button" class="btn btn-primary btn-lg btn-block" onclick="loadMore()">Load more blogs!</button>
