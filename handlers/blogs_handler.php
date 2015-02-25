@@ -2,7 +2,7 @@
 
 class BlogsHandler {
 	function get() {
-		userAuth();
+		$userDetails = userAuth();
 
 		$blogs = get_blogs();
 		$weeks = get_weeks_before_now();
