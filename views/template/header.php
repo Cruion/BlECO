@@ -30,29 +30,30 @@
         <!--=========================================================================-->
         <!-- Start Header Section                                                    -->
         <!--=========================================================================-->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand smallCap" href="<?php echo Util::getHost();?>"><?php echo $_SESSION['courseProfile']['coursecode'];?> Course Blogs</a>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav smallCap">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-white" id="topNavBar" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+        <h1><?php echo $_SESSION['courseProfile']['coursecode'];?> Course Blogs</h1>
+    </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+<nav class="navbar navbar-default navbar-lower" id="bottomNavBar" role="navigation">
+  <div class="container">
+    <div class="collapse navbar-collapse collapse-buttons">
+      <ul class="nav navbar-nav smallCap">
+                        <li><a href="/">Home</a></li>
+                        <li class="divider"><a href="#">&bull;</a></li>
                         <li><a href="/assignments">Assignments</a></li>
                         <li><a href="/inspiration">Inspiration</a></li>
                         <li><a href="/resources">Resources</a></li>
-                        <li class="divider"><a href="#">&bull;</a></li>
+                        <!-- <li class="divider"><a href="#">&bull;</a></li> -->
                         <li><a href="/blog">Blogs</a></li>
                         <?php if ($_SESSION['isStaff']) {?>
-                            <li><a href="/students">Students</a></li>
-                            <li><a href="/groups">Groups</a></li>
+                            <!-- <li><a href="/students">Students</a></li>
+                            <li><a href="/groups">Groups</a></li> -->
                         <?php }?>
-                        <li><a href="/images">Files</a></li>
+                        <!-- <li><a href="/images">Files</a></li> -->
                         <li class="divider"><a href="#">&bull;</a></li>
                         <li><a href="//google.com" target="_blank">Google</a></li>
                     </ul>
@@ -66,9 +67,10 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </div>
-        </div>
+    </div>
+  </div>
+</nav>
+
         <!--=========================================================================-->
         <!-- Stop Header Section                                                     -->
         <!--=========================================================================-->

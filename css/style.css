@@ -1,9 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans:400,300,600);
+
 body {
-    padding-top: 70px;
+    padding-top: 98px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
 }
 
 .smallCap {
-    font-variant: small-caps;
+    /*font-variant: small-caps;*/
+}
+h1 {
+	font-weight: 300;
 }
 
 blockquote p{
@@ -22,4 +29,16 @@ li.divider a {
 }
 .navbar-nav>li.divider>a:hover {
 	background: #222222;
+}
+
+.navbar-white {
+	background: url(/img/pattern.png) #fff repeat-x;
+	border: none;
+}
+.navbar-white h1 {
+	padding: 12px;
+	background-color: #fff;
+}
+.navbar-collapse {
+	padding: 0;
 }
