@@ -1,0 +1,16 @@
+body {
+    padding-top: 70px;
+}
+
+.smallCap {
+    font-variant: small-caps;
+}
+
+blockquote p{
+    font-size: medium;
+}
+
+.tooltip-inner {
+    white-space:pre;
+    max-width:none;
+}

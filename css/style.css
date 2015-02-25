@@ -1,0 +1,25 @@
+body {
+    padding-top: 70px;
+}
+
+.smallCap {
+    font-variant: small-caps;
+}
+
+blockquote p{
+    font-size: medium;
+}
+
+.tooltip-inner {
+    white-space:pre;
+    max-width:none;
+}
+
+li.divider a {
+	cursor: none;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+.navbar-nav>li.divider>a:hover {
+	background: #222222;
+}
