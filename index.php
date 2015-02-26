@@ -14,6 +14,7 @@ require "handlers/image_handler.php";
 require "handlers/logout_handler.php";
 require "handlers/group_handler.php";
 require "handlers/group_post_handler.php";
+require "handlers/student_handler.php";
 require "handlers/new_blog_handler.php";
 require "handlers/static_pages_handler.php";
 require "lib/mysql.php";
@@ -41,6 +42,7 @@ Toro::serve(array(
 	"/inspiration" => "InspirationHandler",
 	"/assignments" => "AssignmentsHandler",
 	"/resources" => "ResourcesHandler",
+	"/students" => "StudentHandler"
 ));
 
 $_SESSION['courseProfile'] = get_blog_profile();

@@ -188,6 +188,18 @@ function update_group_icon($groupId, $image) {
 	$query->execute();
 }
 
+function get_students() {
+	$query = MySQL::getInstance()->query("SELECT * from users WHERE isStaff = false");
+	return $query->fetchALL();
+}
+
+function get_student_blogs($userName) {
+	$query = MySQL::getInstance()->prepare("SELECT * from blogs WHERE author = :authorId");
+	$query->bindValue(":authorId", $userName, PDO::PARAM_STR);
+	$query->execute();
+	return $query->fetchALL();
+}
+
 /**
  *
  * function get_article_by_slug($slug) {
