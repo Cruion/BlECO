@@ -50,7 +50,7 @@ function get_current_week() {
 }
 
 function get_blogs() {
-	$query = MySQL::getInstance()->query("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10");
+	$query = MySQL::getInstance()->query("SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10");
 	return $query->fetchALL();
 }
 

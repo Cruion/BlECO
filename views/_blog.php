@@ -40,7 +40,7 @@ if (isset($excludeTags)) {
 </div>
             <div class="col-xs-1">
                 <?php
-if ($userDetails["name"] == $blog["name"]) {
+if ($userDetails["userName"] == $blog["userName"]) {
 
 	?>
             <p>
