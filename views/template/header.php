@@ -50,8 +50,8 @@
                         <li><a href="/resources">Resources</a></li>
                         <!-- <li class="divider"><a href="#">&bull;</a></li> -->
                         <li><a href="/blog">Blogs</a></li>
-
-                        <!-- <li><a href="/images">Files</a></li> -->
+						<li class="divider"><a href="#">&bull;</a></li>
+                        <li><a href="/images">Image Hosting</a></li>
                         <li class="divider"><a href="#">&bull;</a></li>
                         <li><a href="//google.com" target="_blank">Google</a></li>
                     </ul>

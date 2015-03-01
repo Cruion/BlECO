@@ -70,9 +70,9 @@ function get_blogs() {
 	return $query->fetchALL();
 }
 
-function get_blogs_named($type) {
-	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE tags LIKE 'inspiration' AND name = 'Staff' LIMIT 10");
-	$query->bindValue(":type", $type, PDO::PARAM_STR);
+function get_blogs_named() {
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name = 'Staff'");
+	$query->execute();
 	return $query->fetchALL();
 }
 

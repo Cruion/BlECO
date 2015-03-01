@@ -4,11 +4,11 @@
 <!--=========================================================================-->
 <div class="container">
     <?php if ($_SESSION['guest'] == "notGuest" && $numPosts["numPosts"] == 0) {?>
-        <div class="alert alert-dismissable alert-warning">
+      <!--  <div class="alert alert-dismissable alert-warning">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <h4 class="smallCap">Warning!</h4>
-            <p>Your group has currently not submitted a blog for this week. You have <?php echo $currentWeek["remaining"];?> remaining.</p>
-        </div>
+            <p>You have currently not submitted a blog for this week. You have <?php echo $currentWeek["remaining"];?> remaining.</p>
+        </div> -->
 <?php }?>
     <h1 class="smallCap"><?php echo $_SESSION['courseCode'];?> <small><?php echo $_SESSION['courseName'];?></small></h1>
 
@@ -34,20 +34,20 @@
                         <label for="body" class="col-lg-2 control-label">Body</label>
                         <div class="col-lg-10">
                             <textarea class="form-control" rows="6" id="body" name="body" onkeyup="bodyChange()" onchange="bodyChange()"></textarea>
-                          <p class="help-block">Can format blog using bbcode style formating. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> img/uqjweige_53db9c69a09de.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
+                          <p class="help-block">Can format blog using bbcode style formatting. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://imgur.com/gallery/??????? OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
                         </div>
                       </div>
                     <div class="form-group">
                         <label for="video" class="col-sm-2 control-label">Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="video" name="video" onkeyup="videoChange()" onchange="videoChange()" placeholder="HDUaoIqcn2c (YouTube video id)">
+                            <input type="text" class="form-control" id="video" name="video" onkeyup="videoChange()" onchange="videoChange()" placeholder="HDUaoIqcn2c (YouTube video id) OR 120562699 (Vimeo video id)">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="video" class="col-sm-2 control-label">Tags</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="tags" name="tags">
-                            <p class="help-block">Comma separated list. If you tag something with "Inspiration" it will appear under the inspiration tab.</p>
+                            <p class="help-block">Comma separated list.</p>
                         </div>
                     </div>
                     <div class="form-group">

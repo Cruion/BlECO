@@ -19,13 +19,13 @@ class ImagesHandler {
 				list($txt, $ext) = explode(".", $name);
 				if (in_array($ext, $valid_formats)) {
 					global $userName;
-					$actual_image_name = uniqid($userName . "_") . "." . $ext;
+					$actual_image_name = uniqid($_SESSION['userName'] . "_") . "." . $ext;
 					$tmp = $_FILES['image']['tmp_name'];
 					if (move_uploaded_file($tmp, "img/" . $actual_image_name)) {
 						// do move
 						$response = "Image uploaded successfully: img/" . $actual_image_name;
 						$responseCode = "success";
-						set_image($actual_image_name, $_POST["description"], $userName);
+						set_image($actual_image_name, $_POST["description"], $_SESSION['userName']);
 					} else {
 						$response = "Upload failed.";
 						$responseCode = "error";

@@ -10,7 +10,7 @@ include("views/template/header.php");
 
     <h2>Images</h2>
     <div class="row">
-        <?php if ($guest == "notGuest") { ?>
+        <?php if ($_SESSION['guest'] == "notGuest") { ?>
         <div class="col-md-3">
             <?php
             if (isset($responseCode) && $responseCode == "success")
