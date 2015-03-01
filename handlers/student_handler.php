@@ -20,4 +20,26 @@ class StudentHandler {
 	}
 }
 
+class StudentPostHandler {
+	function get($student) {
+		userAuth();
+
+		//$group = get_group_by_slug($slug);
+		//$blogs = get_group_blogs($group["groupId"]);
+		
+		$blogs = get_student_blogs($student);
+		
+		$weeks = get_weeks_before_now();
+		foreach ($weeks as $key => $week) {
+			$tempArray = [];
+			$sideBlogs = get_student_blogs_between($student, $week["startDate"], $week["endDate"]);
+			foreach ($sideBlogs as $sideBlog) {
+				$tempArray[] = $sideBlog;
+			}
+			$weeks[$key]["blogs"] = $tempArray;
+		}
+		include "views/group.php";
+	}
+}
+
 ?>

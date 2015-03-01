@@ -24,9 +24,25 @@ function get_group_blogs($groupId) {
 	return $query->fetchALL();
 }
 
+function get_student_blogs($student) {
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.givenName, users.familyName, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC) AS T WHERE author = :student");
+	$query->bindValue(":student", $student, PDO::PARAM_STR);
+	$query->execute();
+	return $query->fetchALL();
+}
+
 function get_group_blogs_between($groupId, $startDate, $endDate) {
 	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName AND users.groupID = :groupId AND blogs.published BETWEEN :startDate AND :endDate LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC");
 	$query->bindValue(":groupId", $groupId, PDO::PARAM_INT);
+	$query->bindValue(":startDate", $startDate, PDO::PARAM_STR);
+	$query->bindValue(":endDate", $endDate, PDO::PARAM_STR);
+	$query->execute();
+	return $query->fetchALL();
+}
+
+function get_student_blogs_between($student, $startDate, $endDate) {
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.givenName, users.familyName, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName AND blogs.published BETWEEN :startDate AND :endDate LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC) AS T WHERE author = :student");
+	$query->bindValue(":student", $student, PDO::PARAM_STR);
 	$query->bindValue(":startDate", $startDate, PDO::PARAM_STR);
 	$query->bindValue(":endDate", $endDate, PDO::PARAM_STR);
 	$query->execute();
@@ -54,8 +70,26 @@ function get_blogs() {
 	return $query->fetchALL();
 }
 
+function get_blogs_named($type) {
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE tags LIKE 'inspiration' AND name = 'Staff' LIMIT 10");
+	$query->bindValue(":type", $type, PDO::PARAM_STR);
+	return $query->fetchALL();
+}
+
+function get_blogs_student() {
+	$query = MySQL::getInstance()->query("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10");
+	return $query->fetchALL();
+}
+
 function get_more_blogs($offset) {
 	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10 OFFSET :offset");
+	$query->bindValue(":offset", $offset * 10, PDO::PARAM_INT);
+	$query->execute();
+	return $query->fetchALL();
+}
+
+function get_more_blogs_student($offset) {
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10 OFFSET :offset");
 	$query->bindValue(":offset", $offset * 10, PDO::PARAM_INT);
 	$query->execute();
 	return $query->fetchALL();
@@ -102,6 +136,14 @@ function get_weeks_before_now() {
 
 function get_blogs_between($startDate, $endDate) {
 	$query = MySQL::getInstance()->prepare("SELECT title, slug FROM blogs WHERE published BETWEEN :startDate AND :endDate ORDER BY blogId DESC");
+	$query->bindValue(":startDate", $startDate, PDO::PARAM_STR);
+	$query->bindValue(":endDate", $endDate, PDO::PARAM_STR);
+	$query->execute();
+	return $query->fetchALL();
+}
+
+function get_blogs_between_student($startDate, $endDate) {
+	$query = MySQL::getInstance()->prepare("SELECT title, slug FROM blogs WHERE published BETWEEN :startDate AND :endDate AND author LIKE 's%' ORDER BY blogId DESC");
 	$query->bindValue(":startDate", $startDate, PDO::PARAM_STR);
 	$query->bindValue(":endDate", $endDate, PDO::PARAM_STR);
 	$query->execute();
@@ -193,12 +235,12 @@ function get_students() {
 	return $query->fetchALL();
 }
 
-function get_student_blogs($userName) {
+/*function get_student_blogs($userName) {
 	$query = MySQL::getInstance()->prepare("SELECT * from blogs WHERE author = :authorId");
 	$query->bindValue(":authorId", $userName, PDO::PARAM_STR);
 	$query->execute();
 	return $query->fetchALL();
-}
+}*/
 
 /**
  *

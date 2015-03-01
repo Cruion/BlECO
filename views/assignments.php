@@ -13,7 +13,9 @@ $blogTag = "assignments";
 $noComments = 1;
 $showAuthor = 0;
 foreach ($blogs as $blog) {
-	include "views/_blog.php";
+	if ($blog["name"] == "Staff") {
+		include "views/_blog.php";
+	}
 }
 if (false && count($blogs) == 10) {
 	?>
@@ -24,7 +26,7 @@ if (false && count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-                    <?php include "views/_sidebar.php"?>
+                    <?php //include "views/_sidebar.php"?>
                 </div>
             </div>
         </div>

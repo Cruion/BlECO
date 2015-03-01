@@ -18,9 +18,11 @@
                     <h2>Blogs</h2>
 
                     <?php
-$excludeTags = "announcements,inspiration,assignments,resources";
+//$excludeTags = "announcements,inspiration,assignments,resources";
 foreach ($blogs as $blog) {
-	include "views/_blog.php";
+	if ($blog["name"] != "Staff") {
+		include "views/_blog.php";
+	}
 }
 if (count($blogs) == 10) {
 	?>

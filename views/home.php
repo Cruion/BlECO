@@ -34,7 +34,7 @@ if (false && count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-                    <?php include "views/_sidebar.php"?>
+                    <?php //include "views/_sidebar.php"?>
                 </div>
             </div>
         </div>

@@ -4,11 +4,11 @@ class BlogsHandler {
 	function get() {
 		$userDetails = userAuth();
 
-		$blogs = get_blogs();
+		$blogs = get_blogs_student();
 		$weeks = get_weeks_before_now();
 		foreach ($weeks as $key => $week) {
 			$tempArray = [];
-			$sideBlogs = get_blogs_between($week["startDate"], $week["endDate"]);
+			$sideBlogs = get_blogs_between_student($week["startDate"], $week["endDate"]);
 			foreach ($sideBlogs as $sideBlog) {
 				$tempArray[] = $sideBlog;
 			}
@@ -24,7 +24,7 @@ class BlogsHandler {
 		$offset = $_POST["offset"];
 		$excludeTags = $_POST["excludedTags"];
 
-		$blogs = get_more_blogs($offset);
+		$blogs = get_more_blogs_student($offset);
 
 		foreach ($blogs as $blog) {
 			include "views/_blog.php";
