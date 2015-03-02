@@ -6,7 +6,7 @@
     <h1 class="smallCap">DECO3801/7381 <small>Design Computing Studio 3 - Build</small></h1>
 
     <div class="row">
-<?php if ($guest == "notGuest")
+<?php if ($_SESSION['guest'] == "notGuest")
 { ?>
             <h2>Edit Blog</h2>
 
@@ -28,13 +28,13 @@
                         <label for="body" class="col-lg-2 control-label">Body</label>
                         <div class="col-lg-10">
                             <textarea class="form-control" rows="6" id="body" name="body" onkeyup="bodyChange()" onchange="bodyChange()"><?php echo $blog["body"]; ?></textarea>
-                          <p class="help-block">Can format blog using bbcode style formating. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> img/uqjweige_53db9c69a09de.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
+                          <p class="help-block">Can format blog using bbcode style formating. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://imgur.com/gallery/??????? OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
                         </div>
                       </div>
                     <div class="form-group">
                         <label for="video" class="col-sm-2 control-label">Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="video" name="video" onkeyup="videoChange()" value="<?php echo $blog["video"]; ?>" onchange="videoChange()" placeholder="HDUaoIqcn2c (YouTube video id)">
+                            <input type="text" class="form-control" id="video" name="video" onkeyup="videoChange()" value="<?php echo $blog["video"]; ?>" onchange="videoChange()" placeholder="HDUaoIqcn2c (YouTube video id) OR 120562699 (Vimeo video id)">
                         </div>
                     </div>
                     <div class="form-group">

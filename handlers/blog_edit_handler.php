@@ -2,7 +2,7 @@
 
 class BlogEditHandler {
 	function get($slug) {
-		userAuth();
+		$userDetails = userAuth();
 
 		$blog = get_blog_by_slug($slug);
 
