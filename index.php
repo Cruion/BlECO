@@ -16,6 +16,7 @@ require "handlers/group_handler.php";
 require "handlers/group_post_handler.php";
 require "handlers/student_handler.php";
 require "handlers/new_blog_handler.php";
+require "handlers/new_assignment_handler.php";
 require "handlers/static_pages_handler.php";
 require "lib/mysql.php";
 require "lib/util.php";
@@ -35,6 +36,7 @@ Toro::serve(array(
 	"/blog/:alpha/edit" => "BlogEditHandler",
 	"/blog/:number/comment" => "CommentHandler",
 	"/new-blog" => "NewBlogHandler",
+	"/new-assignment" => "NewAssignmentHandler",
 	"/images" => "ImagesHandler",
 	"/logout" => "LogoutHandler",
 	"/groups" => "GroupHandler",

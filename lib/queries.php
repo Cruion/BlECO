@@ -81,6 +81,11 @@ function get_blogs_student() {
 	return $query->fetchALL();
 }
 
+function get_blogs_assignment() {
+	$query = MySQL::getInstance()->query("SELECT * FROM blogs WHERE tags LIKE '%assignments%'");
+	return $query->fetchALL();
+}
+
 function get_more_blogs($offset) {
 	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10 OFFSET :offset");
 	$query->bindValue(":offset", $offset * 10, PDO::PARAM_INT);
@@ -184,6 +189,17 @@ function post_blog($title, $slug, $video, $tags, $body, $author) {
 	$query->bindValue(":video", $video, is_null($video) ? PDO::PARAM_NULL : PDO::PARAM_STR);
 	$query->bindValue(":tags", $tags, is_null($tags) ? PDO::PARAM_NULL : PDO::PARAM_STR);
 	$query->bindValue(":body", $body, PDO::PARAM_STR);
+	$query->bindValue(":author", $author, PDO::PARAM_STR);
+	$query->bindValue(":published", date("Y-m-d H:i:s"), PDO::PARAM_STR);
+	$query->bindValue(":modified", null, PDO::PARAM_NULL);
+	$query->execute();
+}
+
+function post_assignment($title, $body, $author, $filename) {
+	$query = MySQL::getInstance()->prepare("INSERT INTO assignments (assignment, notes, filename, published, author, modified) VALUES (:assignment, :notes, :filename, :published, :author, :modified)");
+	$query->bindValue(":assignment", $title, PDO::PARAM_STR);
+	$query->bindValue(":notes", $body, PDO::PARAM_STR);
+	$query->bindValue(":filename", $filename, PDO::PARAM_STR);
 	$query->bindValue(":author", $author, PDO::PARAM_STR);
 	$query->bindValue(":published", date("Y-m-d H:i:s"), PDO::PARAM_STR);
 	$query->bindValue(":modified", null, PDO::PARAM_NULL);

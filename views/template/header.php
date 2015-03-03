@@ -62,7 +62,9 @@
                                 <li class="disabled"><a href="#"><?php echo $_SESSION['userName'] . " - " . $userDetails["name"];?></a></li>
                                 <li class="divider"></li>
                                 <?php if ($_SESSION['isStaff']) {?>
-                            <li><a href="/students">Students</a></li>
+                            <li><a href="/students">Assignment Submissions</a></li>
+                            <li class="divider"></li>
+                                <li><a href="/students">Students</a></li>
                             <li><a href="/groups">Groups</a></li>
                             <li class="divider"></li>
                         <?php }?>
