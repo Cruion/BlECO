@@ -23,7 +23,9 @@ $blogTag = "announcements";
 $noComments = 1;
 $showAuthor = 0;
 foreach ($blogs as $blog) {
-	include "views/_blog.php";
+	if ($blog["name"] == "Staff") {
+		include "views/_blog.php";
+	}
 }
 if (false && count($blogs) == 10) {
 	?>

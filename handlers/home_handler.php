@@ -7,7 +7,7 @@ class HomeHandler {
 
 		$currentWeek = get_current_week();
 		$numPosts = get_number_of_group_post_by_week($userDetails["groupId"], $currentWeek["startDate"], $currentWeek["endDate"]);
-		$blogs = get_blogs();
+		$blogs = get_blogs_named();
 		$weeks = get_weeks_before_now();
 		foreach ($weeks as $key => $week) {
 			$tempArray = [];
