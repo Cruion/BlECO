@@ -13,4 +13,26 @@ function userAuth() {
 
 }
 
+
+
+class UserProfileHandler {
+	function get() {
+		$userDetails = userAuth();
+		include "views/profile.php";
+	}
+	
+	function post() {
+		$userDetails = userAuth();
+		
+		$avatar = $_POST["avatar"];
+		
+		if ($avatar != "") {
+			set_user_avatar($userDetails["userName"], $avatar);
+		}
+		
+		$userDetails = userAuth();
+		include "views/profile.php";
+	}
+}
+
 ?>

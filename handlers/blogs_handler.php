@@ -23,13 +23,16 @@ class BlogsHandler {
 
 		$offset = $_POST["offset"];
 		$excludeTags = $_POST["excludedTags"];
+		if ($excludeTags == "") {
+			unset($excludeTags);
+		}
 
 		$blogs = get_more_blogs_student($offset);
 
 		foreach ($blogs as $blog) {
 			include "views/_blog.php";
 		}
-		if (count($blogs) == 2) {
+		if (count($blogs) == 10) {
 			echo '<button id="loadMoreBtn" type="button" class="btn btn-primary btn-lg btn-block" onclick="loadMore()">Load more blogs!</button>';
 		}
 	}

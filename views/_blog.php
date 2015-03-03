@@ -27,7 +27,16 @@ if (isset($excludeTags)) {
     <div class="panel-heading clearfix">
         <div class="row">
             <div class="col-xs-2">
-                <img src="/<?php echo $blog["groupIcon"];?>" class="img-thumbnail" />
+            	
+                <img src="/<?php 
+                
+                if (isset($blog["userIcon"])) {
+                	echo $blog["userIcon"];
+                } else {
+	                echo $blog["groupIcon"];
+                }
+                
+                ?>" class="img-thumbnail" />
             </div>
             <div class="col-xs-9">
         <h3><?php echo $blog["title"]?></h3>

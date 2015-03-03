@@ -25,7 +25,7 @@ function get_group_blogs($groupId) {
 }
 
 function get_student_blogs($student) {
-	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.givenName, users.familyName, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC) AS T WHERE author = :student");
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.givenName, users.familyName, users.userIcon, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC) AS T WHERE author = :student");
 	$query->bindValue(":student", $student, PDO::PARAM_STR);
 	$query->execute();
 	return $query->fetchALL();
@@ -71,13 +71,13 @@ function get_blogs() {
 }
 
 function get_blogs_named() {
-	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name = 'Staff'");
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, users.userIcon, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name = 'Staff'");
 	$query->execute();
 	return $query->fetchALL();
 }
 
 function get_blogs_student() {
-	$query = MySQL::getInstance()->query("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10");
+	$query = MySQL::getInstance()->query("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, users.userIcon, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10");
 	return $query->fetchALL();
 }
 
@@ -87,14 +87,14 @@ function get_blogs_assignment() {
 }
 
 function get_more_blogs($offset) {
-	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10 OFFSET :offset");
+	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupIcon, users.userIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC LIMIT 10 OFFSET :offset");
 	$query->bindValue(":offset", $offset * 10, PDO::PARAM_INT);
 	$query->execute();
 	return $query->fetchALL();
 }
 
 function get_more_blogs_student($offset) {
-	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10 OFFSET :offset");
+	$query = MySQL::getInstance()->prepare("SELECT * FROM (SELECT blogs.*, users.userName, users.givenName, users.familyName, users.userIcon, groups.name, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId GROUP BY blogId ORDER BY blogId DESC) AS T WHERE name != 'Staff' LIMIT 10 OFFSET :offset");
 	$query->bindValue(":offset", $offset * 10, PDO::PARAM_INT);
 	$query->execute();
 	return $query->fetchALL();
@@ -148,7 +148,7 @@ function get_blogs_between($startDate, $endDate) {
 }
 
 function get_blogs_between_student($startDate, $endDate) {
-	$query = MySQL::getInstance()->prepare("SELECT title, slug FROM blogs WHERE published BETWEEN :startDate AND :endDate AND author LIKE 's%' ORDER BY blogId DESC");
+	$query = MySQL::getInstance()->prepare("SELECT blogs.title, blogs.slug, blogs.author, users.givenName, users.familyName FROM blogs, users WHERE blogs.published BETWEEN :startDate AND :endDate AND blogs.author LIKE 's%' AND blogs.author = users.userName ORDER BY blogs.blogId DESC");
 	$query->bindValue(":startDate", $startDate, PDO::PARAM_STR);
 	$query->bindValue(":endDate", $endDate, PDO::PARAM_STR);
 	$query->execute();
@@ -243,6 +243,13 @@ function update_group_icon($groupId, $image) {
 	$query = MySQL::getInstance()->prepare("UPDATE groups SET groupIcon = :groupIcon WHERE groupId = :groupId");
 	$query->bindValue(":groupId", $groupId, PDO::PARAM_INT);
 	$query->bindValue(":groupIcon", $image, PDO::PARAM_STR);
+	$query->execute();
+}
+
+function set_user_avatar($userName, $avatar) {
+	$query = MySQL::getInstance()->prepare("UPDATE users SET userIcon = :avatar WHERE userName = :userName");
+	$query->bindValue(":userName", $userName, PDO::PARAM_STR);
+	$query->bindValue(":avatar", $avatar, PDO::PARAM_STR);
 	$query->execute();
 }
 

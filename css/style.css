@@ -92,3 +92,8 @@ hr {
 	font-size: 8pt;
 	font-weight: 300;
 }
+
+.smallNameSideBar {
+	font-size: small;
+	font-variant: small-caps;
+}

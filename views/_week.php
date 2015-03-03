@@ -13,7 +13,7 @@
                 foreach ($sideBlogs as $sideBlog) {
                     ?>
             <p>
-                <a href="<?php echo Util::getHost(); ?>/blog/<?php echo $sideBlog["slug"]; ?>"><?php echo $sideBlog["title"]; ?></a>
+                <a href="<?php echo Util::getHost(); ?>/blog/<?php echo $sideBlog["slug"]; ?>"><?php echo $sideBlog["title"]; ?><br /> &nbsp;&nbsp;&nbsp;&nbsp; <span class="smallNameSideBar"> <?php echo $sideBlog["givenName"]; ?> <?php echo $sideBlog["familyName"]; ?></span></a>
             </p>
                     <?php
                 }
