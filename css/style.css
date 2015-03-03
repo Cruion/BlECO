@@ -17,6 +17,10 @@ blockquote p{
     font-size: medium;
 }
 
+h3.assignment {
+    margin-top: 5px;
+}
+
 .tooltip-inner {
     white-space:pre;
     max-width:none;
@@ -60,7 +64,7 @@ li.divider a {
 	margin-left: 5px !important;
 }
 .btn.btn-square:last-child {
-	clear: left;
+	/*clear: left;*/
 }
 .square-content{
     position:  absolute;

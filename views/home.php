@@ -36,12 +36,19 @@ if (false && count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-                <iframe src="https://freesecure.timeanddate.com/countdown/i4khder6/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatDECO3850%20-%20DECO7385%20Final%20Exhibit/tac000/tptTime%20since%20Event%20started%20in/tpc000/matThe%20Edge%2C%20Brisbane/mac000/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="323" height="69"></iframe>
-                    <?php //include "views/_sidebar.php"?>
+                <!-- <iframe src="https://freesecure.timeanddate.com/countdown/i4khder6/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatDECO3850%20-%20DECO7385%20Final%20Exhibit/tac000/tptTime%20since%20Event%20started%20in/tpc000/matThe%20Edge%2C%20Brisbane/mac000/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="323" height="69"></iframe> -->
+                <iframe src="http://free.timeanddate.com/countdown/i4kjgru5/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatTime%20left%20to/tac000/tptTime%20since%20Event%20started%20in/tpc000/matProjects%20Exhibition/mac000/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="100%" height="69"></iframe>
+
+    <?php //include "views/_sidebar.php"?>
                 <p></p>
                 <a href="/new-blog" class="btn btn-square btn-block btn-lg btn-info">
-                    <div class='square-content'><div><span><i class="fa fa-pencil"></i><br>Compose</span></div></div>
+                    <div class='square-content'><div><span><i class="fa fa-pencil"></i><br>Post<br>new Blog</span></div></div>
                 </a>
+
+                <a href="/new-assignment" class="btn btn-square btn-block btn-lg btn-success">
+                    <div class='square-content'><div><span><i class="fa fa-upload"></i><br>Submit<br>assignment</span></div></div>
+                </a>
+
                 
                 <!-- <a href="/new-assignment" class="btn btn-square btn-block btn-lg btn-success">
                     <div class='square-content'><div><span><i class="fa fa-upload"></i><br>Submit</span></div></div>

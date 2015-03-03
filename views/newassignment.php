@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Select Assignment</label>
                         <div class="col-sm-10">
-                            <select name="assignment" id="assignment">
+                            <select name="assignment"  id="cd-dropdown" class="cd-select">
                                 <option value="#">Select Assignment</option>
                                 <?php 
                                 foreach($assignments as $assignment) {
@@ -31,14 +31,28 @@
                                 <option value="<?php echo trim($assignment['title']); ?>"><?php echo trim($assignment['title']); ?></option>
                                 <?php } ?>
                             </select>
+
+                            <link rel="stylesheet" href="/css/dropdown.css" />
+                            <script src="/js/modernizr.custom.63321.js" type="text/javascript"></script>
+                            <script src="/js/jquery.dropdown.js" type="text/javascript"></script>
+                            <script src="/js/bootstrap.file-input.js" type="text/javascript"></script>
+
                         </div>
                     </div>
                       <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Attach File</label>
                         <div class="col-sm-10">
-                            <input type="file" name="attachment" id="attachment" />
+                            <input type="file" title="Search for a file to add" name="attachment" id="attachment" />
                         </div>
                     </div>
+
+                    <script type="text/javascript">
+                                $(document).ready( function() {
+                                    $( '#cd-dropdown' ).dropdown();
+                                    $('input[type=file]').bootstrapFileInput();
+                                });
+                    </script>
+
                     <div class="form-group">
                         <label for="body" class="col-lg-2 control-label">Notes</label>
                         <div class="col-lg-10">

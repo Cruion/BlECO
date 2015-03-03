@@ -206,6 +206,22 @@ function post_assignment($title, $body, $author, $filename) {
 	$query->execute();
 }
 
+function get_assignments($userName) {
+	try{
+		$query = MySQL::getInstance()->prepare("SELECT * from assignments ORDER BY assignment, published DESC");
+	if (isset($userName)) {
+		$query = MySQL::getInstance()->prepare("SELECT * from assignments WHERE author = :author ORDER BY assignment, published DESC");
+		$query->bindValue(":author", $userName, PDO::PARAM_INT);
+	}
+	$query->execute();
+	return $query->fetchALL();
+	}
+catch(Exception $e) {
+    echo 'Exception -> ';
+    var_dump($e->getMessage());
+}
+}
+
 function get_blog_by_id($blogId) {
 	$query = MySQL::getInstance()->prepare("SELECT * from blogs WHERE blogId = :blogId");
 	$query->bindValue(":blogId", $blogId, PDO::PARAM_INT);

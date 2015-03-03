@@ -17,6 +17,7 @@ require "handlers/group_post_handler.php";
 require "handlers/student_handler.php";
 require "handlers/new_blog_handler.php";
 require "handlers/new_assignment_handler.php";
+require "handlers/assignments_handler.php";
 require "handlers/static_pages_handler.php";
 require "lib/mysql.php";
 require "lib/util.php";
@@ -37,6 +38,8 @@ Toro::serve(array(
 	"/blog/:number/comment" => "CommentHandler",
 	"/new-blog" => "NewBlogHandler",
 	"/new-assignment" => "NewAssignmentHandler",
+	"/my-assignments" => "MyAssignmentsHandler",
+	"/all-assignments" => "AllAssignmentsHandler",
 	"/images" => "ImagesHandler",
 	"/logout" => "LogoutHandler",
 	"/groups" => "GroupHandler",

@@ -24,9 +24,9 @@ class NewAssignmentHandler {
 				// if (in_array($ext, $valid_formats)) {
 					$actual_image_name = uniqid($_SESSION['userName'] . "_") . "." . $ext;
 					$tmp = $_FILES['attachment']['tmp_name'];
-					if (move_uploaded_file($tmp, "assignments/" . $actual_image_name)) {
+					if (move_uploaded_file($tmp, "uploads/" . $actual_image_name)) {
 						// do move
-						$response = "Assignment successfully submitted. You can view your submission at <a target='_blank' href='http://deco3850.uqcloud.net/assignments/" . $actual_image_name."'>http://deco3850.uqcloud.net/assignments/" . $actual_image_name."</a>";
+						$response = "Assignment successfully submitted. You can view your submission at <a target='_blank' href='http://deco3850.uqcloud.net/uploads/" . $actual_image_name."'>http://deco3850.uqcloud.net/uploads/" . $actual_image_name."</a>";
 						$responseCode = "success";
 						
 						post_assignment($assignment, $body, $_SESSION['userName'], $actual_image_name);
