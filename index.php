@@ -48,7 +48,8 @@ Toro::serve(array(
 	"/assignments" => "AssignmentsHandler",
 	"/resources" => "ResourcesHandler",
 	"/students" => "StudentHandler",
-	"/students/:alpha" => "StudentPostHandler"
+	"/students/:alpha" => "StudentPostHandler",
+	"/profile" => "UserProfileHandler"
 ));
 
 $_SESSION['courseProfile'] = get_blog_profile();

@@ -61,6 +61,10 @@
                             <ul class="dropdown-menu smallCap" role="menu">
                                 <li class="disabled"><a href="#"><?php echo $_SESSION['userName'] . " - " . $userDetails["name"];?></a></li>
                                 <li class="divider"></li>
+<<<<<<< HEAD
+=======
+                                <li><a href="/profile">My Profile</a></li>
+>>>>>>> e16b28e6bcfb98a6c12851238c9d69e379035e53
                                 <li><a href="/my-assignments">My Assignments</a></li>
                                 <?php if ($_SESSION['isStaff']) {?>
                             <li><a href="/all-assignments">All Assignments</a></li>
