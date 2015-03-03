@@ -36,12 +36,10 @@ if (false && count($blogs) == 10) {
 
                 </div>
                 <div class="col-md-3">
-<<<<<<< HEAD
                 <!-- <iframe src="https://freesecure.timeanddate.com/countdown/i4khder6/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatDECO3850%20-%20DECO7385%20Final%20Exhibit/tac000/tptTime%20since%20Event%20started%20in/tpc000/matThe%20Edge%2C%20Brisbane/mac000/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="323" height="69"></iframe> -->
 <iframe src="http://free.timeanddate.com/countdown/i4kjgru5/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatCourse%20Projects%20Exhibiton/tac000/tptTime%20since/tpc000/matat%20The%20Edge%20in.../mac000/mptProjects%20Exhibition%20at%20The%20Edge/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="230" height="69"></iframe>
 
     <?php //include "views/_sidebar.php"?>
-=======
                 <?php //include "views/_sidebar.php"?>
                                 <!-- <iframe src="https://freesecure.timeanddate.com/countdown/i4khder6/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatDECO3850%20-%20DECO7385%20Final%20Exhibit/tac000/tptTime%20since%20Event%20started%20in/tpc000/matThe%20Edge%2C%20Brisbane/mac000/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="323" height="69"></iframe> -->
 <iframe src="http://free.timeanddate.com/countdown/i4kjgru5/n47/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatCourse%20Projects%20Exhibiton/tac000/tptTime%20since/tpc000/matat%20The%20Edge%20in.../mac000/mptProjects%20Exhibition%20at%20The%20Edge/mpc000/iso2015-06-03T12:00:00" allowTransparency="true" frameborder="0" width="230" height="69"></iframe>
@@ -49,7 +47,6 @@ if (false && count($blogs) == 10) {
                 <div class="clear"></div>
                     <hr>
                 
->>>>>>> e16b28e6bcfb98a6c12851238c9d69e379035e53
                 <p></p>
                 <?php if ($_SESSION['guest'] == "notGuest") {?>
                 <a href="/new-blog" class="btn btn-square btn-block btn-lg btn-info">
@@ -59,13 +56,9 @@ if (false && count($blogs) == 10) {
                 <a href="/new-assignment" class="btn btn-square btn-block btn-lg btn-success">
                     <div class='square-content'><div><span><i class="fa fa-upload"></i><br>Submit<br>assignment</span></div></div>
                 </a>
-<<<<<<< HEAD
-
-=======
 				<?php } ?>
 				
 				    <?php //include "views/_sidebar.php"?>
->>>>>>> e16b28e6bcfb98a6c12851238c9d69e379035e53
                 
                 <!-- <a href="/new-assignment" class="btn btn-square btn-block btn-lg btn-success">
                     <div class='square-content'><div><span><i class="fa fa-upload"></i><br>Submit</span></div></div>

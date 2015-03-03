@@ -6,8 +6,6 @@ include("views/template/header.php");
 <!-- Start Content Section                                                   -->
 <!--=========================================================================-->
 <div class="container">
-    <h1 class="smallCap">DECO3801/7381 <small>Design Computing Studio 3 - Build</small></h1>
-
     <h2>Images</h2>
     <div class="row">
         <?php if ($_SESSION['guest'] == "notGuest") { ?>
