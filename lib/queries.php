@@ -101,7 +101,7 @@ function get_more_blogs_student($offset) {
 }
 
 function get_blog_by_slug($slug) {
-	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, groups.name, groups.groupId, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId WHERE blogs.slug =:slug GROUP BY blogId");
+	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, users.userIcon, groups.name, groups.groupId, groups.groupIcon, COUNT(comments.commentId) as comments FROM blogs LEFT JOIN comments ON comments.blogId=blogs.blogId LEFT JOIN users ON users.userName=blogs.author LEFT JOIN groups ON groups.groupId=users.groupId WHERE blogs.slug =:slug GROUP BY blogId");
 	$query->bindValue(":slug", $slug, PDO::PARAM_STR);
 	$query->execute();
 	return $query->fetch(PDO::FETCH_ASSOC);
