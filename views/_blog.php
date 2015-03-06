@@ -99,7 +99,7 @@ if ($blog["video"] != null && preg_match('/[a-zA-Z]/', $blog["video"]) > 0) {
 			include "views/_comment.php";
 		}
 	}?>
-        <?php global $guest;if ($guest == "notGuest") {?>
+        <?php global $guest;if ($_SESSION['guest'] == "notGuest") {?>
         <form class="form-horizontal" method="post" action="/blog/<?php echo $blog['blogId'];?>/comment">
           <fieldset>
             <legend>New Comment</legend>
@@ -107,14 +107,14 @@ if ($blog["video"] != null && preg_match('/[a-zA-Z]/', $blog["video"]) > 0) {
               <label for="textArea" class="col-xs-2 control-label">Comment</label>
               <div class="col-xs-10">
                 <textarea class="form-control" rows="3" name="body" id="body"></textarea>
-                <p class="help-block">Can format comment using bbcode style formating. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://imgur.com/gallery/??????? OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
+                <p class="help-block">Can format comment using bbcode style formatting. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://imgur.com/gallery/??????? OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
               </div>
             </div>
                 <div class="form-group">
               <div class="col-xs-10 col-xs-offset-2">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" id="commentType" name="critique" value="critique"> This is a critique.
+                    <input type="hidden" id="commentType" name="critique" value="0">
                   </label>
                 </div>
               </div>
@@ -130,13 +130,13 @@ if ($blog["video"] != null && preg_match('/[a-zA-Z]/', $blog["video"]) > 0) {
 
                 <?php }?>
                  </div>
-<?php if (!isset($noComments)) {
+<?php //if (!isset($noComments)) {
 	?>            <div class="panel-footer">
                 <p>Permalink: <a href="<?php echo Util::getHost();?>/blog/<?php echo $blog["slug"];?>"><?php echo Util::getHost();?>/blog/<?php echo $blog["slug"];?></a></p>
-                <p>Public Permalink: <a href="<?php echo Util::getHost();?>/public/blog/<?php echo $blog["slug"];?>"><?php echo Util::getHost();?>/public/blog/<?php echo $blog["slug"];?></a></p>
+                <!--<p>Public Permalink: <a href="<?php echo Util::getHost();?>/public/blog/<?php echo $blog["slug"];?>"><?php echo Util::getHost();?>/public/blog/<?php echo $blog["slug"];?></a></p>-->
             </div>
 
-                <?php }?>
+                <?php //}?>
 
 </div>
 

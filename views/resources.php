@@ -10,7 +10,7 @@
 
 <?php
 $blogTag = "resources";
-$noComments = 1;
+//$noComments = 1;
 foreach ($blogs as $blog) {
 	if ($blog["name"] == "Staff") {
 		include "views/_blog.php";

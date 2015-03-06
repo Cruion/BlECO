@@ -9,7 +9,7 @@
                 <div class="col-md-9">
 <?php
 $blogTag = "inspiration";
-$noComments = 1;
+//$noComments = 1;
 $showAuthor = 0;
 foreach ($blogs as $blog) {
 	if ($blog["name"] == "Staff") {

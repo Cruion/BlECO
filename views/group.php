@@ -11,7 +11,7 @@
                             <p>Your group has currently not submitted a blog for this week. You have X day(s) and X hour(s) remaining.</p>
                         </div>
             -->
-            <h1 class="smallCap">DECO3801/7381 <small>Design Computing Studio 3 - Build</small></h1>
+            
 
             <div class="row">
                 <div class="col-md-9">
