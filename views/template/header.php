@@ -46,6 +46,7 @@
                         <li><a href="/">Home</a></li>
                         <li class="divider"><a href="#">&bull;</a></li>
                         <li><a href="/assignments">Assignments</a></li>
+                        <li><a href="/lectures">Lectures</a></li>
                         <li><a href="/inspiration">Inspiration</a></li>
                         <li><a href="/resources">Resources</a></li>
                         <!-- <li class="divider"><a href="#">&bull;</a></li> -->

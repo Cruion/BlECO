@@ -47,6 +47,7 @@ Toro::serve(array(
 	"/inspiration" => "InspirationHandler",
 	"/assignments" => "AssignmentsHandler",
 	"/resources" => "ResourcesHandler",
+	"/lectures" => "LecturesHandler",
 	"/students" => "StudentHandler",
 	"/students/:alpha" => "StudentPostHandler",
 	"/profile" => "UserProfileHandler"

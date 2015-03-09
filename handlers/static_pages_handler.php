@@ -27,4 +27,13 @@ class ResourcesHandler {
 	}
 }
 
+class LecturesHandler {
+	function get() {
+
+		$userDetails = userAuth();
+		$blogs = get_blogs_named();
+		include "views/lectures.php";
+	}
+}
+
 ?>
