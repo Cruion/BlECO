@@ -2,7 +2,8 @@
 class CommentHandler {
     function post($blogId) {
         if (isset($_POST["body"]) && strlen(trim($_POST['body'])) > 0) {
-            global $userName;
+            $userDetails = userAuth();
+            $userName = $userDetails["userName"];
             
             if (isset($_POST["critique"])) {
                 set_critique($blogId, trim($_POST['body']), $userName);

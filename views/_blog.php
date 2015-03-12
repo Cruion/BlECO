@@ -41,9 +41,10 @@ if (isset($excludeTags)) {
             <div class="col-xs-9">
         <h3><?php echo $blog["title"]?></h3>
         <?php if (isset($showAuthor)) {?>
-<p class="smallCap"><?php echo $blog["givenName"];?> - <?php echo date("D j F Y\, g:i a", strtotime($blog["published"]));?></p>
+<p class="smallCap">
+<a href="/students/<?php echo $blog["userName"];?>"><?php echo $blog["givenName"];?></a> - <?php echo date("D j F Y\, g:i a", strtotime($blog["published"]));?></p>
   <?php }if (!isset($showAuthor)) {?>
-        <p class="smallCap"><?php echo $blog["givenName"] . " " . $blog["familyName"] . " [" . $blog["name"] . "]";?> - <?php echo date("D j F Y\, g:i a", strtotime($blog["published"]));?></p>
+        <p class="smallCap"><a href="/students/<?php echo $blog["userName"];?>"><?php echo $blog["givenName"] . " " . $blog["familyName"] . " [" . $blog["name"] . "]";?></a> - <?php echo date("D j F Y\, g:i a", strtotime($blog["published"]));?></p>
         <?php if (!is_null($blog["modified"])) {?> <p class="smallCap">Modified - <?php echo date("D j F Y\, g:i a", strtotime($blog["modified"]));?></p> <?php }?>
     <?php }?>
 </div>
