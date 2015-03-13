@@ -28,12 +28,23 @@ if (isset($excludeTags)) {
         <div class="row">
             <div class="col-xs-2">
             	
-                <img src="/<?php 
+                <img src="<?php 
                 
                 if (isset($blog["userIcon"])) {
-                	echo $blog["userIcon"];
+                	$r = preg_match('/^[img\/]/', $blog["userIcon"]);
+					if ($r > 0) {
+						echo "/".$blog["userIcon"];
+					} else {
+						echo $blog["userIcon"];
+					}
                 } else {
 	                echo $blog["groupIcon"];
+	                $r = preg_match('/^[img\/]/', $blog["groupIcon"]);
+					if ($r > 0) {
+						echo "/".$blog["groupIcon"];
+					} else {
+						echo $blog["groupIcon"];
+					}
                 }
                 
                 ?>" class="img-thumbnail" />
