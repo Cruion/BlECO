@@ -34,7 +34,7 @@
                         <label for="body" class="col-lg-2 control-label">Body</label>
                         <div class="col-lg-10">
                             <textarea class="form-control" rows="6" id="body" name="body" onkeyup="bodyChange()" onchange="bodyChange()"></textarea>
-                          <p class="help-block">Can format blog using bbcode style formatting. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://i.imgur.com/???????.png OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
+                          <p class="help-block">Can format blog using bbcode style formatting. Accepted formatting: <code data-toggle="tooltip" data-placement="top" title="<strong>[b]</strong> bold text <strong>[/b]</strong>">b</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[i]</strong> italic text <strong>[/i]</strong>">i</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[img]</strong> http://i.imgur.com/???????.png OR img/uqjweige_?????????.png <strong>[/img]</strong>">img</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[url]</strong> http://www.google.com <strong>[/url]</strong>">url</code>, <code data-toggle="tooltip" data-placement="top" title="<strong>[code]</strong> &lt; p &gt; Example text &lt; /p &gt; <strong>[/code]</strong>">code</code>.</p>
                         </div>
                       </div>
                     <div class="form-group">
@@ -173,6 +173,7 @@
         /\[b\](.*?)\[\/b\]/ig,
         /\[i\](.*?)\[\/i\]/ig,
         /\[url\](.*?)\[\/url\]/ig,
+        /\[img\]img(.*?)\[\/img\]/ig,
         /\[img\](.*?)\[\/img\]/ig,
         /\[code\](.*?)\[\/code\]/ig
     ];
@@ -180,8 +181,9 @@
     var format_replace = [
         '<strong>$1</strong>',
         '<em>$1</em>',
-        '<a href="http://$1">$1</a>',
-        '<img src="/$1" class="img-responsive" />',
+        '<a href="$1">$1</a>',
+        '<img src="/img$1" class="img-responsive" />',
+        '<img src="$1" class="img-responsive" />',
         '<pre class="pre-scrollable">$1</pre>'
     ];
 
