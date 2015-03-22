@@ -64,6 +64,7 @@
                                 <li class="divider"></li>
                                 <li><a href="/profile">My Profile</a></li>
                                 <li><a href="/my-assignments">My Assignments</a></li>
+                                <li><a href="/students/<?php echo $_SESSION['userName'];?>">My Blog Posts</a></li>
                                 <?php if ($_SESSION['isStaff']) {?>
                             <li><a href="/all-assignments">All Assignments</a></li>
                             <li class="divider"></li>
