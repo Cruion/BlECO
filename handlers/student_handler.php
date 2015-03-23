@@ -22,7 +22,7 @@ class StudentHandler {
 
 class StudentPostHandler {
 	function get($student) {
-		userAuth();
+		$userDetails = userAuth();
 
 		//$group = get_group_by_slug($slug);
 		//$blogs = get_group_blogs($group["groupId"]);

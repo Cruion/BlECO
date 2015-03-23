@@ -18,7 +18,7 @@ function get_group_by_slug($slug) {
 }
 
 function get_group_blogs($groupId) {
-	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.givenName, users.familyName, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName AND users.groupID = :groupId LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC");
+	$query = MySQL::getInstance()->prepare("SELECT blogs.*, users.userName, users.givenName, users.familyName, users.userIcon, COUNT(commentId) as comments, groups.name, groups.groupIcon FROM blogs JOIN users ON blogs.author = users.userName AND users.groupID = :groupId LEFT JOIN comments ON blogs.blogId = comments.blogId LEFT JOIN groups ON users.groupId = groups.groupId GROUP BY blogs.blogId ORDER BY blogs.blogId DESC");
 	$query->bindValue(":groupId", $groupId, PDO::PARAM_INT);
 	$query->execute();
 	return $query->fetchALL();

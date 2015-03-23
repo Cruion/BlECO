@@ -39,7 +39,7 @@ if ($index % 6 != 0) {
 ?>
 
     <?php
-if ($guest == "notGuest") {
+if ($_SESSION['guest'] == "notGuest") {
 	?>
 
         <hr />

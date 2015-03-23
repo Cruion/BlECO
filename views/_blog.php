@@ -30,7 +30,7 @@ if (isset($excludeTags)) {
             	
                 <img src="<?php 
                 
-                if (isset($blog["userIcon"])) {
+                if (isset($blog["userIcon"]) && (($blog["userIcon"] != "img/undergraduate.png") && ($blog["userIcon"] != "img/postgraduate.png"))) {
                 	$r = preg_match('/^[img\/]/', $blog["userIcon"]);
 					if ($r > 0) {
 						echo "/".$blog["userIcon"];
@@ -38,7 +38,6 @@ if (isset($excludeTags)) {
 						echo $blog["userIcon"];
 					}
                 } else {
-	                echo $blog["groupIcon"];
 	                $r = preg_match('/^[img\/]/', $blog["groupIcon"]);
 					if ($r > 0) {
 						echo "/".$blog["groupIcon"];

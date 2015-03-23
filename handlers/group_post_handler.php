@@ -2,7 +2,7 @@
 
 class GroupPostHandler {
 	function get($slug) {
-		userAuth();
+		$userDetails = userAuth();
 
 		$group = get_group_by_slug($slug);
 		$blogs = get_group_blogs($group["groupId"]);
