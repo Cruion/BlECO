@@ -12,6 +12,7 @@ class NewAssignmentHandler {
 	}
 
 	function post() {
+		if (isset($_POST["assignment"]) && isset($_POST["body"]) && isset($_SESSION['userName'])) {
 		$assignment = $_POST["assignment"];
 		$body = $_POST["body"];
 		$userName = $_SESSION['userName'];
@@ -50,6 +51,9 @@ class NewAssignmentHandler {
 		$response = $response;
 		$assignments = get_blogs_assignment();
 		include "views/newassignment.php";
+		} else {
+			include "views/assignmenterror.php";
+		}
 		//header('Location: ' . Util::getHost() . '/blog/' . $slug);
 	}
 }

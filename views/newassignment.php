@@ -15,9 +15,51 @@
     <div class="row">
 <?php if ($_SESSION['guest'] == "notGuest") {?>
             <h2>Submit Assignment</h2>
+				
+				<p></p>
 
-            <p><?php echo $response ?></p>
-
+<?php if(isset($response)) {
+		if (0 === strpos($response, "Assignment successfully submitted.")) {
+		
+		?>
+		
+		<div class="container">
+		
+		<div class="alert alert-dismissable alert-success">
+		
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<h4 class="smallCap">Success!</h4>
+            <p><?php echo $response; ?></p>
+		
+		</div>
+		
+		</div>
+		
+		<?php
+		
+	}
+	else
+	{
+		?>
+		
+		<div class="container">
+		
+		<div class="alert alert-dismissable alert-danger">
+		
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<h4 class="smallCap">Error!</h4>
+            <p><?php echo $response; ?></p>
+		
+		</div>
+		
+		</div>
+		
+		<?php
+		
+	}
+	
+	}
+?>
             <form class="form-horizontal" action="/new-assignment" method="post"  enctype="multipart/form-data">
                 <fieldset>
                     <div class="form-group">
